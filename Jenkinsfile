@@ -217,5 +217,12 @@ post {
              subject: "${env.JOB_NAME} - Build # ${env.BUILD_ID} is success",
              body: "Hi, this is Hermann, Jenkins pipeline was realized with success."
     }
+
+    failure {
+        echo "This will run if the job failed"
+        mail to: "hermann.acm@gmail.com",
+             subject: "${env.JOB_NAME} - Build # ${env.BUILD_ID} has failed",
+             body: "Hi, this is Hermann, Jenkins pipeline failed. for more info on the pipeline failure, check out the console output at ${env.BUILD_URL}"
+    }
 }
 }

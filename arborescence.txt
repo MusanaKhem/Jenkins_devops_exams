@@ -1,0 +1,89 @@
+.
+├── arborescence.txt
+├── cast-service
+│   ├── app
+│   │   ├── api
+│   │   │   ├── casts.py
+│   │   │   ├── db_manager.py
+│   │   │   ├── db.py
+│   │   │   ├── models.py
+│   │   │   └── __pycache__
+│   │   │       ├── casts.cpython-38.pyc
+│   │   │       ├── db.cpython-38.pyc
+│   │   │       ├── db_manager.cpython-38.pyc
+│   │   │       └── models.cpython-38.pyc
+│   │   ├── main.py
+│   │   └── __pycache__
+│   │       └── main.cpython-38.pyc
+│   ├── Dockerfile
+│   └── requirements.txt
+├── config
+├── docker-compose.yml
+├── fastapi
+│   ├── charts
+│   ├── Chart.yaml
+│   ├── templates
+│   │   ├── deployment.yaml
+│   │   ├── _helpers.tpl
+│   │   ├── hpa.yaml
+│   │   ├── ingress.yaml
+│   │   ├── NOTES.txt
+│   │   ├── serviceaccount.yaml
+│   │   ├── service.yaml
+│   │   └── tests
+│   │       └── test-connection.yaml
+│   └── values.yaml
+├── Jenkinsfile
+├── Kube_Manifests
+│   ├── cast-db-deployment.yaml
+│   ├── cast-service-claim0-persistentvolumeclaim.yaml
+│   ├── cast-service-deployment.yaml
+│   ├── cast_service-service.yaml
+│   ├── movie-db-deployment.yaml
+│   ├── movie-service-claim0-persistentvolumeclaim.yaml
+│   ├── movie-service-deployment.yaml
+│   ├── movie_service-service.yaml
+│   ├── nginx-claim0-persistentvolumeclaim.yaml
+│   ├── nginx-deployment.yaml
+│   ├── nginx-service.yaml
+│   ├── postgres-data-cast-persistentvolumeclaim.yaml
+│   └── postgres-data-movie-persistentvolumeclaim.yaml
+├── lien_dockehub.txt
+├── lien_repo.txt
+├── movieapi
+│   ├── charts
+│   ├── Chart.yaml
+│   ├── movie-values.yaml
+│   └── templates
+│       ├── deployment.yaml
+│       ├── _helpers.tpl
+│       ├── hpa.yaml
+│       ├── ingress.yaml
+│       ├── NOTES.txt
+│       ├── serviceaccount.yaml
+│       ├── service.yaml
+│       └── tests
+│           └── test-connection.yaml
+├── movie-service
+│   ├── app
+│   │   ├── api
+│   │   │   ├── db_manager.py
+│   │   │   ├── db.py
+│   │   │   ├── models.py
+│   │   │   ├── movies.py
+│   │   │   ├── __pycache__
+│   │   │   │   ├── db.cpython-38.pyc
+│   │   │   │   ├── db_manager.cpython-38.pyc
+│   │   │   │   ├── models.cpython-38.pyc
+│   │   │   │   ├── movies.cpython-38.pyc
+│   │   │   │   └── service.cpython-38.pyc
+│   │   │   └── service.py
+│   │   ├── main.py
+│   │   └── __pycache__
+│   │       └── main.cpython-38.pyc
+│   ├── Dockerfile
+│   └── requirements.txt
+├── nginx_config.conf
+└── README.md
+
+20 directories, 67 files

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o Kube_Manifests
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cast-db
+  name: cast-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cast-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o Kube_Manifests
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/jenkins-devops-exams-default: "true"
+        io.kompose.service: cast-db
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: cast_db_dev
+            - name: POSTGRES_PASSWORD
+              value: cast_db_password
+            - name: POSTGRES_USER
+              value: cast_db_username
+          image: postgres:12.1-alpine
+          name: cast-db
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-data-cast
+      restartPolicy: Always
+      volumes:
+        - name: postgres-data-cast
+          persistentVolumeClaim:
+            claimName: postgres-data-cast
+status: {}

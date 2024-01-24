@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o Kube_Manifests
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: movie-service
+  name: movie-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: movie-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o Kube_Manifests
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/jenkins-devops-exams-default: "true"
+        io.kompose.service: movie-service
+    spec:
+      containers:
+        - args:
+            - uvicorn
+            - app.main:app
+            - --reload
+            - --host
+            - 0.0.0.0
+            - --port
+            - "8001"
+          env:
+            - name: CAST_SERVICE_HOST_URL
+              value: http://cast_service:8002/api/v1/casts/
+            - name: DATABASE_URI
+              value: postgresql://movie_db_username:movie_db_password@movie_db/movie_db_dev
+          image: movie-service
+          name: movie-service
+          ports:
+            - containerPort: 8001
+              hostPort: 8001
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - mountPath: /app
+              name: movie-service-claim0
+      restartPolicy: Always
+      volumes:
+        - name: movie-service-claim0
+          persistentVolumeClaim:
+            claimName: movie-service-claim0
+status: {}

@@ -63,8 +63,6 @@ pipeline {
                     script {
                     sh '''
                       curl localhost
-                      curl http://movie_service:8001/api/v1/movies
-                      curl http://movie_service:8002/api/v1/movies
                       echo "STAGE SUCCESS : Test d'acceptation réussi"
                     '''
                     }

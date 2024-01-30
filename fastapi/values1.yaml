@@ -5,12 +5,13 @@
 replicaCount: 1
 
 image:
-  repository: hmatondo/jenkins_devops_exam-cast_service
+  repository: hmatondo/jenkins_devops_exams-cast_service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: my-docker-secret
 nameOverride: ""
 fullnameOverride: ""
 

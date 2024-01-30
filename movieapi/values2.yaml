@@ -10,7 +10,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: my-docker-secret
 nameOverride: ""
 fullnameOverride: ""
 
@@ -41,7 +42,7 @@ securityContext: {}
 
 service:
   type: NodePort
-  port: 80
+  port: 81
 
 ingress:
   enabled: false
